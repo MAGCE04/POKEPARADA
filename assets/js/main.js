@@ -20,6 +20,12 @@ function injectGlobalElements() {
     bg.className = 'bg-fx';
     document.body.prepend(bg);
   }
+  if (!document.querySelector('.crt')) {
+    const crt = document.createElement('div');
+    crt.className = 'crt';
+    crt.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(crt);
+  }
   if (!isCoarse && !document.querySelector('.cursor-dot')) {
     const dot = document.createElement('div');
     dot.className = 'cursor-dot';
@@ -197,6 +203,36 @@ function initStaggerHero() {
     }
     h1.appendChild(el);
   });
+}
+
+/* ---------- Stat counters ---------- */
+function initCounters() {
+  const els = document.querySelectorAll('.pkdx-stat-num[data-count]');
+  if (!els.length) return;
+
+  const animate = (el) => {
+    const target = parseInt(el.dataset.count, 10) || 0;
+    const suffix = el.dataset.suffix || '';
+    const dur = 1400;
+    const start = performance.now();
+    const fmt = (n) => Math.round(n).toLocaleString('es-MX') + suffix;
+    function step(now) {
+      const t = Math.min(1, (now - start) / dur);
+      // ease-out cubic
+      const eased = 1 - Math.pow(1 - t, 3);
+      el.textContent = fmt(target * eased);
+      if (t < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  };
+
+  if (!('IntersectionObserver' in window)) { els.forEach(animate); return; }
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { animate(e.target); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.4 });
+  els.forEach(el => io.observe(el));
 }
 
 /* ---------- Reveal on scroll ---------- */
@@ -533,6 +569,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initHolo();
   initMagnetic();
   initStaggerHero();
+  initCounters();
 });
 
 window.addEventListener('load', () => {

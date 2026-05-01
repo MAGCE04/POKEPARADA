@@ -168,6 +168,7 @@ function renderFeatured() {
   const grid = document.getElementById('featured-grid');
   if (!grid) return;
   grid.innerHTML = PRODUCTS.filter(p => p.featured).slice(0, 4).map(productCard).join('');
+  if (typeof initReveal === 'function') initReveal();
 }
 
 function renderCatalog() {
@@ -192,6 +193,7 @@ function renderCatalog() {
     return;
   }
   grid.innerHTML = list.map(productCard).join('');
+  if (typeof initReveal === 'function') initReveal();
 }
 
 function buyNow(product) {

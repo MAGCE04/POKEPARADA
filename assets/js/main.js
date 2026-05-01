@@ -197,6 +197,54 @@ function goToCheckout() {
   window.location.href = 'checkout.html';
 }
 
+/* ---------- Reveal-on-scroll ---------- */
+let revealObserver;
+
+function initReveal() {
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-visible'));
+    return;
+  }
+  if (!revealObserver) {
+    revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  }
+
+  // Skip hero (above the fold) so it appears immediately
+  const skipSelector = '.hero .container, .page-head .container';
+  const candidates = document.querySelectorAll(
+    'section:not(.hero) > .container, .service-card, .product-card, .steps li, .trust-item, .faq details, .form-shell'
+  );
+  candidates.forEach(el => {
+    if (el.matches(skipSelector)) return;
+    if (el.classList.contains('is-visible')) return;
+    el.classList.add('reveal');
+    revealObserver.observe(el);
+  });
+}
+
+/* ---------- Service-card cursor glow ---------- */
+function initCardGlow() {
+  document.querySelectorAll('.service-card').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      card.style.setProperty('--mx', `${e.clientX - rect.left}px`);
+      card.style.setProperty('--my', `${e.clientY - rect.top}px`);
+    });
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  initReveal();
+  initCardGlow();
+});
+
 window.addToCart = addToCart;
 window.changeQty = changeQty;
 window.removeFromCart = removeFromCart;

@@ -76,11 +76,27 @@ El servidor expone:
 Abre <http://localhost:3000> y prueba el flujo completo:
 **Catálogo → Carrito → Checkout → Mercado Pago → /gracias.html**
 
-### d) Pasar a producción
+### d) Desplegar en Vercel (recomendado)
 
-1. Sube el proyecto a un VPS, Render, Railway, Fly.io, Vercel (con functions) o similar.
-2. En el panel de MP, crea credenciales **de producción** y reemplaza las TEST.
-3. Configura `PUBLIC_URL` en `.env` con tu dominio real.
+El proyecto ya está configurado para Vercel:
+- Las páginas HTML/CSS/JS se sirven como **sitio estático**.
+- Los endpoints de Mercado Pago viven en `/api/*.js` como **funciones serverless**.
+
+**Pasos:**
+1. Importa el repo desde el dashboard de Vercel (no necesita build).
+2. Ve a **Project Settings → Environment Variables** y añade:
+   - `MP_ACCESS_TOKEN` = tu token privado de Mercado Pago
+   - `PUBLIC_URL` = tu URL final (ej. `https://pokeparada.vercel.app`)
+3. En `assets/js/config.js` deja `API_BASE: ''` (mismo dominio) y pega tu `MP_PUBLIC_KEY`.
+4. Redeploy. Listo.
+
+> **Nota:** `server.js` es solo para desarrollo local con `npm run dev`. En Vercel se usan los archivos de `/api/`.
+
+### e) Otros hostings (Render, Railway, VPS)
+
+1. Sube el proyecto al hosting.
+2. Configura las variables de entorno (`MP_ACCESS_TOKEN`, `PUBLIC_URL`, `PORT`).
+3. Ejecuta `npm install && npm run dev` (o `node server.js`).
 4. Configura HTTPS (obligatorio para Mercado Pago en producción).
 5. (Opcional) Implementa el webhook para marcar pedidos como pagados en tu BD.
 

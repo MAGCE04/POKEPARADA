@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vende tus cartas — PokéParada</title>
+  <meta name="description" content="Te compramos tus cartas Pokémon. Tasación gratuita en menos de 24 horas. Pago al instante por SPEI o Mercado Pago." />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header class="site-header" id="site-header"></header>
+
+  <section class="page-head">
+    <div class="container">
+      <span class="pill">Compramos tus cartas</span>
+      <h1>Recibe una oferta justa por tu colección</h1>
+      <p>Llena el formulario, sube fotos de tus cartas y nuestro equipo te contestará con una oferta en menos de 24 horas. Si aceptas, te enviamos guía prepagada y te pagamos en cuanto recibimos las cartas.</p>
+    </div>
+  </section>
+
+  <section class="form-page">
+    <div class="container">
+      <div class="form-shell">
+        <div class="form-grid">
+          <div class="step-num">1</div>
+          <h2 style="margin:0;">Cuéntanos qué tienes</h2>
+        </div>
+
+        <form id="sell-form" class="form-grid" novalidate>
+          <div class="form-row">
+            <div class="form-field">
+              <label for="s-name">Nombre completo *</label>
+              <input id="s-name" name="name" required />
+            </div>
+            <div class="form-field">
+              <label for="s-phone">WhatsApp *</label>
+              <input id="s-phone" name="phone" required placeholder="55 1234 5678" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label for="s-email">Correo *</label>
+              <input id="s-email" name="email" type="email" required />
+            </div>
+            <div class="form-field">
+              <label for="s-state">Estado</label>
+              <select id="s-state" name="state">
+                <option>CDMX</option><option>Jalisco</option><option>Nuevo León</option>
+                <option>Estado de México</option><option>Puebla</option><option>Querétaro</option>
+                <option>Yucatán</option><option>Otro</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label for="s-cards">Describe tus cartas *</label>
+            <textarea id="s-cards" name="cards" required placeholder="Ejemplo: 3 cartas Base Set 1999 (Charizard, Blastoise, Venusaur), 1 ETB sellada Paldea Evolved, ~80 commons WOTC."></textarea>
+            <div class="form-help">Incluye juego/set, edición, idioma, condición aproximada y cantidad.</div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label for="s-condition">Condición general *</label>
+              <select id="s-condition" name="condition" required>
+                <option value="">Selecciona...</option>
+                <option>Mint / Near Mint</option>
+                <option>Lightly Played</option>
+                <option>Moderately Played</option>
+                <option>Heavily Played / Damaged</option>
+                <option>Mixto</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label for="s-expected">¿Tienes precio esperado? (opcional)</label>
+              <input id="s-expected" name="expected" placeholder="$ MXN aproximado" />
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label for="s-photos">Fotos de tus cartas *</label>
+            <input id="s-photos" name="photos" type="file" multiple accept="image/*" required />
+            <div class="form-help">Sube de 3 a 12 fotos claras (frente y reverso). Máximo 10 MB cada una.</div>
+          </div>
+
+          <div class="form-field">
+            <label>Método de pago preferido</label>
+            <div style="display:flex; gap:16px; flex-wrap:wrap;">
+              <label><input type="radio" name="payment" value="spei" checked /> SPEI / Transferencia</label>
+              <label><input type="radio" name="payment" value="mp" /> Mercado Pago</label>
+              <label><input type="radio" name="payment" value="oxxo" /> Depósito OXXO</label>
+              <label><input type="radio" name="payment" value="efectivo" /> Efectivo (CDMX)</label>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Enviar para tasación</button>
+            <a href="https://wa.me/525500000000" target="_blank" rel="noopener" class="btn btn-outline">Hablar por WhatsApp</a>
+          </div>
+          <div id="sell-feedback"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer" id="site-footer"></footer>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/products.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      renderHeader('vender');
+      renderFooter();
+
+      document.getElementById('sell-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const form = e.target;
+        if (!form.checkValidity()) { form.reportValidity(); return; }
+        // En producción: enviar a tu backend o servicio (Formspree, Make, n8n, etc.)
+        const data = Object.fromEntries(new FormData(form).entries());
+        console.log('Solicitud de tasación:', data);
+        document.getElementById('sell-feedback').innerHTML = `
+          <div class="alert">
+            ¡Recibimos tu solicitud! Te responderemos por WhatsApp o correo en menos de 24 horas con una oferta.
+          </div>`;
+        form.reset();
+        window.scrollTo({ top: document.getElementById('sell-feedback').offsetTop - 80, behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+</html>

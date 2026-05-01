@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PokéParada — Compra, Venta y Restauración de Cartas Pokémon en México</title>
+  <meta name="description" content="Compramos, vendemos y restauramos cartas Pokémon en México. Pago seguro con Mercado Pago. Tasaciones gratuitas y restauración profesional." />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Press+Start+2P&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header class="site-header" id="site-header"></header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">Negocio 100% mexicano</span>
+          <h1>Compra, vende y restaura tus cartas <span class="accent">Pokémon</span></h1>
+          <p class="lead">
+            Somos especialistas en cartas Pokémon. Te pagamos al instante, te vendemos cartas auténticas y devolvemos la vida a tus cartas dañadas. Pago seguro con Mercado Pago.
+          </p>
+          <div class="hero-ctas">
+            <a class="btn btn-primary" href="comprar.html">Ver catálogo</a>
+            <a class="btn btn-outline" href="vender.html">Vender mis cartas</a>
+            <a class="btn btn-ghost" href="restaurar.html">Cotizar restauración</a>
+          </div>
+          <ul class="hero-trust">
+            <li>Tasaciones gratuitas</li>
+            <li>Envíos a todo México</li>
+            <li>Pagos seguros</li>
+          </ul>
+        </div>
+        <div class="hero-card">
+          <div class="card-stack">
+            <div class="card card-1"></div>
+            <div class="card card-2"></div>
+            <div class="card card-3"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="services" id="servicios">
+      <div class="container">
+        <h2 class="section-title">¿Qué hacemos?</h2>
+        <p class="section-sub">Tres servicios pensados para coleccionistas, jugadores e inversionistas.</p>
+
+        <div class="service-grid">
+          <a class="service-card service-buy" href="comprar.html">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18l-2 12H5L3 6z"/><path d="M8 6V4a4 4 0 0 1 8 0v2"/></svg>
+            </div>
+            <h3>Vendemos cartas</h3>
+            <p>Cartas auténticas, singles, booster boxes y ETBs. Garantía de autenticidad y envío asegurado.</p>
+            <span class="service-cta">Ver catálogo →</span>
+          </a>
+
+          <a class="service-card service-sell" href="vender.html">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1v22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <h3>Compramos tus cartas</h3>
+            <p>Te pagamos al instante. Mándanos fotos y recibe una oferta justa en menos de 24 horas.</p>
+            <span class="service-cta">Tasar mis cartas →</span>
+          </a>
+
+          <a class="service-card service-restore" href="restaurar.html">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2l6 6-12 12H2v-6L14 2z"/></svg>
+            </div>
+            <h3>Restauramos cartas</h3>
+            <p>Limpieza profesional, enderezado, retoque de bordes y sleeving. Devolvemos brillo a tu colección.</p>
+            <span class="service-cta">Pedir cotización →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="process">
+      <div class="container">
+        <h2 class="section-title">Así de fácil es trabajar con nosotros</h2>
+        <ol class="steps">
+          <li>
+            <span class="step-num">1</span>
+            <h4>Cuéntanos qué necesitas</h4>
+            <p>Elige uno de nuestros 3 servicios y llena un formulario corto.</p>
+          </li>
+          <li>
+            <span class="step-num">2</span>
+            <h4>Recibe tu cotización</h4>
+            <p>Te respondemos por WhatsApp o correo en menos de 24 horas.</p>
+          </li>
+          <li>
+            <span class="step-num">3</span>
+            <h4>Pago y envío seguros</h4>
+            <p>Pagas o cobras con Mercado Pago. Enviamos a todo México con guía rastreable.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="featured" id="destacados">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2 class="section-title">Destacados de la semana</h2>
+            <p class="section-sub">Cartas seleccionadas por nuestro equipo.</p>
+          </div>
+          <a class="link-arrow" href="comprar.html">Ver todo el catálogo →</a>
+        </div>
+        <div id="featured-grid" class="product-grid"></div>
+      </div>
+    </section>
+
+    <section class="trust">
+      <div class="container trust-grid">
+        <div class="trust-item">
+          <h4>Autenticidad garantizada</h4>
+          <p>Cada carta pasa por verificación física y, si se requiere, por servicios de grading reconocidos.</p>
+        </div>
+        <div class="trust-item">
+          <h4>Pago seguro</h4>
+          <p>Aceptamos tarjetas, transferencias SPEI, OXXO y MSI mediante Mercado Pago.</p>
+        </div>
+        <div class="trust-item">
+          <h4>Atención humana</h4>
+          <p>Sin bots: te atiende un coleccionista. WhatsApp directo y soporte post-venta real.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq">
+      <div class="container">
+        <h2 class="section-title">Preguntas frecuentes</h2>
+        <details>
+          <summary>¿Cómo funciona la tasación de mis cartas?</summary>
+          <p>Llena el formulario en la sección "Vender" con fotos claras de tus cartas. Te respondemos en menos de 24 horas con una oferta. Si la aceptas, generamos una guía de envío prepagada y te pagamos en cuanto recibimos las cartas.</p>
+        </details>
+        <details>
+          <summary>¿Qué métodos de pago aceptan?</summary>
+          <p>Aceptamos tarjeta de crédito y débito, transferencia SPEI, pago en OXXO y meses sin intereses (MSI), todo procesado de forma segura por Mercado Pago.</p>
+        </details>
+        <details>
+          <summary>¿Hacen envíos a toda la República Mexicana?</summary>
+          <p>Sí, enviamos a todo México con guía rastreable. El envío es gratis en compras mayores a $1,500 MXN.</p>
+        </details>
+        <details>
+          <summary>¿Qué tan seguro es restaurar una carta valiosa?</summary>
+          <p>Trabajamos solo restauraciones reversibles y no invasivas. Si la carta es muy valiosa, te recomendamos encapsulado profesional en lugar de restauración.</p>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="site-footer"></footer>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/products.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      renderHeader('inicio');
+      renderFooter();
+      renderFeatured();
+    });
+  </script>
+</body>
+</html>

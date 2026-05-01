@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contacto — PokéParada</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header class="site-header" id="site-header"></header>
+
+  <section class="page-head">
+    <div class="container">
+      <span class="pill">Contacto</span>
+      <h1>Estamos para ayudarte</h1>
+      <p>Resolvemos dudas sobre cualquiera de nuestros servicios. Te respondemos por el canal que prefieras.</p>
+    </div>
+  </section>
+
+  <section class="form-page">
+    <div class="container">
+      <div class="form-shell">
+        <div class="trust-grid" style="margin-bottom: 24px;">
+          <div class="trust-item">
+            <h4>WhatsApp</h4>
+            <p><a href="https://wa.me/525500000000" style="color: var(--color-primary); font-weight:600;">+52 55 0000 0000</a></p>
+          </div>
+          <div class="trust-item">
+            <h4>Correo</h4>
+            <p><a href="mailto:hola@pokeparada.mx" style="color: var(--color-primary); font-weight:600;">hola@pokeparada.mx</a></p>
+          </div>
+          <div class="trust-item">
+            <h4>Horario</h4>
+            <p>Lun a Sáb · 10:00 a 19:00 hrs</p>
+          </div>
+        </div>
+
+        <form id="contact-form" class="form-grid" novalidate>
+          <div class="form-row">
+            <div class="form-field">
+              <label for="c-name">Nombre *</label>
+              <input id="c-name" name="name" required />
+            </div>
+            <div class="form-field">
+              <label for="c-email">Correo *</label>
+              <input id="c-email" name="email" type="email" required />
+            </div>
+          </div>
+          <div class="form-field">
+            <label for="c-topic">Tema *</label>
+            <select id="c-topic" name="topic" required>
+              <option value="">Selecciona...</option>
+              <option>Compra de cartas</option>
+              <option>Venta de cartas</option>
+              <option>Restauración</option>
+              <option>Estado de mi pedido</option>
+              <option>Otro</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="c-message">Mensaje *</label>
+            <textarea id="c-message" name="message" required></textarea>
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Enviar mensaje</button>
+          </div>
+          <div id="contact-feedback"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer" id="site-footer"></footer>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/products.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      renderHeader('contacto');
+      renderFooter();
+      document.getElementById('contact-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (!e.target.checkValidity()) { e.target.reportValidity(); return; }
+        document.getElementById('contact-feedback').innerHTML = `<div class="alert">¡Gracias! Te contactaremos pronto.</div>`;
+        e.target.reset();
+      });
+    });
+  </script>
+</body>
+</html>

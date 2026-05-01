@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pago confirmado — PokéParada</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header class="site-header" id="site-header"></header>
+  <main>
+    <div class="container success-screen">
+      <div class="check">✓</div>
+      <h1>¡Gracias por tu compra!</h1>
+      <p class="lead" style="margin: 0 auto 24px; max-width: 560px;">
+        Recibimos tu pago. Te enviaremos un correo con la confirmación y el número de guía cuando despachemos tu pedido (24-48 hrs hábiles).
+      </p>
+      <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+        <a class="btn btn-primary" href="comprar.html">Seguir comprando</a>
+        <a class="btn btn-outline" href="index.html">Ir al inicio</a>
+      </div>
+    </div>
+  </main>
+  <footer class="site-footer" id="site-footer"></footer>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/products.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      renderHeader();
+      renderFooter();
+      // Limpia el carrito tras pago exitoso
+      try { localStorage.removeItem('pokeparada_cart_v1'); } catch {}
+    });
+  </script>
+</body>
+</html>

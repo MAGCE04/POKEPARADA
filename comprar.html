@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Catálogo — PokéParada</title>
+  <meta name="description" content="Cartas Pokémon auténticas: singles, sellados y graded. Pago seguro con Mercado Pago." />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header class="site-header" id="site-header"></header>
+
+  <section class="page-head">
+    <div class="container">
+      <span class="pill">Catálogo</span>
+      <h1>Compra cartas Pokémon auténticas</h1>
+      <p>Cada producto pasa por verificación de autenticidad. Envío a todo México con guía rastreable. Pago 100% seguro con Mercado Pago.</p>
+    </div>
+  </section>
+
+  <section style="padding: 32px 0 80px;">
+    <div class="container">
+      <div class="filters">
+        <input id="search" type="search" placeholder="Buscar por nombre, set..." oninput="renderCatalog()" />
+        <select id="cat-filter" onchange="renderCatalog()">
+          <option value="all">Todas las categorías</option>
+          <option value="singles">Singles</option>
+          <option value="sealed">Sellados</option>
+          <option value="graded">Graded (PSA/CGC)</option>
+        </select>
+        <select id="sort-filter" onchange="renderCatalog()">
+          <option value="featured">Orden destacado</option>
+          <option value="price-asc">Precio: menor a mayor</option>
+          <option value="price-desc">Precio: mayor a menor</option>
+          <option value="name">Nombre A-Z</option>
+        </select>
+      </div>
+      <div id="catalog-grid" class="product-grid"></div>
+    </div>
+  </section>
+
+  <footer class="site-footer" id="site-footer"></footer>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/products.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      renderHeader('comprar');
+      renderFooter();
+      renderCatalog();
+    });
+  </script>
+</body>
+</html>

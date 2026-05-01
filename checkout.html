@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pago seguro — PokéParada</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://sdk.mercadopago.com/js/v2"></script>
+</head>
+<body>
+  <header class="site-header" id="site-header"></header>
+
+  <section class="page-head">
+    <div class="container">
+      <span class="pill">Checkout</span>
+      <h1>Confirma tu compra</h1>
+      <p>Revisa tu pedido y completa el pago de forma segura. Aceptamos tarjeta, SPEI, OXXO y meses sin intereses con Mercado Pago.</p>
+    </div>
+  </section>
+
+  <section class="form-page">
+    <div class="container" style="display:grid; grid-template-columns: 1.1fr 0.9fr; gap: 24px;" id="checkout-grid">
+      <div class="form-shell">
+        <h2 style="margin:0 0 8px;">Datos de envío</h2>
+        <p class="lead">Enviamos a todo México. Envío gratis en compras mayores a $1,500 MXN.</p>
+
+        <form id="checkout-form" class="form-grid" novalidate>
+          <div class="form-row">
+            <div class="form-field">
+              <label for="ck-name">Nombre completo *</label>
+              <input id="ck-name" name="name" required />
+            </div>
+            <div class="form-field">
+              <label for="ck-phone">Teléfono *</label>
+              <input id="ck-phone" name="phone" required />
+            </div>
+          </div>
+          <div class="form-field">
+            <label for="ck-email">Correo *</label>
+            <input id="ck-email" name="email" type="email" required />
+          </div>
+          <div class="form-field">
+            <label for="ck-address">Dirección *</label>
+            <input id="ck-address" name="address" required placeholder="Calle, número, colonia" />
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label for="ck-city">Ciudad *</label>
+              <input id="ck-city" name="city" required />
+            </div>
+            <div class="form-field">
+              <label for="ck-zip">Código postal *</label>
+              <input id="ck-zip" name="zip" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label for="ck-state">Estado *</label>
+              <select id="ck-state" name="state" required>
+                <option value="">Selecciona...</option>
+                <option>CDMX</option><option>Aguascalientes</option><option>Baja California</option>
+                <option>Baja California Sur</option><option>Campeche</option><option>Chiapas</option>
+                <option>Chihuahua</option><option>Coahuila</option><option>Colima</option>
+                <option>Durango</option><option>Estado de México</option><option>Guanajuato</option>
+                <option>Guerrero</option><option>Hidalgo</option><option>Jalisco</option>
+                <option>Michoacán</option><option>Morelos</option><option>Nayarit</option>
+                <option>Nuevo León</option><option>Oaxaca</option><option>Puebla</option>
+                <option>Querétaro</option><option>Quintana Roo</option><option>San Luis Potosí</option>
+                <option>Sinaloa</option><option>Sonora</option><option>Tabasco</option>
+                <option>Tamaulipas</option><option>Tlaxcala</option><option>Veracruz</option>
+                <option>Yucatán</option><option>Zacatecas</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label for="ck-shipping">Método de envío *</label>
+              <select id="ck-shipping" name="shipping" required onchange="renderSummary()">
+                <option value="standard">Estándar (3-5 días) - $149</option>
+                <option value="express">Express (1-2 días) - $249</option>
+                <option value="pickup">Recoger en CDMX - Gratis</option>
+              </select>
+            </div>
+          </div>
+        </form>
+
+        <div class="alert" style="margin-top:24px; background:#eff6ff; color:#1e3a8a; border-color:#bfdbfe;">
+          <strong>Pago 100% seguro:</strong> Procesado por Mercado Pago. No guardamos datos de tu tarjeta.
+        </div>
+      </div>
+
+      <aside class="form-shell" style="position: sticky; top: 96px; align-self: start;">
+        <h2 style="margin:0 0 8px;">Resumen</h2>
+        <div id="summary-items"></div>
+        <hr style="border: none; border-top: 1px solid var(--color-border); margin: 16px 0;" />
+        <div class="cart-totals"><span>Subtotal</span><span id="sum-subtotal">$0.00</span></div>
+        <div class="cart-totals"><span>Envío</span><span id="sum-shipping">$0.00</span></div>
+        <div class="cart-totals" style="font-size:1.2rem;"><span>Total</span><span id="sum-total">$0.00</span></div>
+
+        <button id="pay-button" class="btn btn-primary btn-block" style="margin-top: 16px;">
+          Pagar con Mercado Pago
+        </button>
+        <a href="comprar.html" class="btn btn-ghost btn-block" style="margin-top: 8px;">Seguir comprando</a>
+        <div id="mp-button-container" style="margin-top: 12px;"></div>
+        <p class="form-help" style="text-align:center; margin-top: 12px;">
+          Tarjetas Visa / Mastercard / AMEX · SPEI · OXXO · Hasta 12 MSI
+        </p>
+      </aside>
+    </div>
+  </section>
+
+  <footer class="site-footer" id="site-footer"></footer>
+
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/products.js"></script>
+  <script src="assets/js/checkout.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      renderHeader('comprar');
+      renderFooter();
+      initCheckout();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Restauración de cartas — PokéParada</title>
+  <meta name="description" content="Servicio profesional de restauración de cartas Pokémon: limpieza, enderezado, retoque de bordes, sleeving y encapsulado." />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header class="site-header" id="site-header"></header>
+
+  <section class="page-head">
+    <div class="container">
+      <span class="pill">Restauración profesional</span>
+      <h1>Devolvemos la vida a tus cartas</h1>
+      <p>Limpieza, enderezado, retoque de bordes y conservación. Trabajamos solo con técnicas reversibles y no invasivas. Ideal antes de un grading o para preservar piezas con valor sentimental.</p>
+    </div>
+  </section>
+
+  <section style="padding: 32px 0; background: white;">
+    <div class="container">
+      <div class="service-grid">
+        <div class="service-card">
+          <h3>Limpieza profunda</h3>
+          <p>Removemos polvo, huellas y residuos sin dañar la tinta ni el holo.</p>
+          <span class="pill">Desde $120 MXN / carta</span>
+        </div>
+        <div class="service-card">
+          <h3>Enderezado y prensado</h3>
+          <p>Eliminamos curvaturas y deformaciones por humedad o calor.</p>
+          <span class="pill">Desde $250 MXN / carta</span>
+        </div>
+        <div class="service-card">
+          <h3>Retoque de bordes</h3>
+          <p>Restauración del whitening y filos desgastados por uso.</p>
+          <span class="pill">Desde $350 MXN / carta</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="form-page">
+    <div class="container">
+      <div class="form-shell">
+        <h2 style="margin:0 0 8px;">Cotiza tu restauración</h2>
+        <p class="lead">Cuéntanos qué tienes y qué buscas. Recibirás cotización en 24 hrs.</p>
+
+        <form id="restore-form" class="form-grid" novalidate>
+          <div class="form-row">
+            <div class="form-field">
+              <label for="r-name">Nombre completo *</label>
+              <input id="r-name" name="name" required />
+            </div>
+            <div class="form-field">
+              <label for="r-phone">WhatsApp *</label>
+              <input id="r-phone" name="phone" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label for="r-email">Correo *</label>
+              <input id="r-email" name="email" type="email" required />
+            </div>
+            <div class="form-field">
+              <label for="r-quantity">¿Cuántas cartas? *</label>
+              <input id="r-quantity" name="quantity" type="number" min="1" required />
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label>Servicios que necesitas *</label>
+            <div style="display:grid; grid-template-columns: repeat(2, 1fr); gap:8px;">
+              <label><input type="checkbox" name="service" value="limpieza" /> Limpieza profunda</label>
+              <label><input type="checkbox" name="service" value="enderezado" /> Enderezado / Prensado</label>
+              <label><input type="checkbox" name="service" value="bordes" /> Retoque de bordes</label>
+              <label><input type="checkbox" name="service" value="sleeving" /> Sleeving / Toploader</label>
+              <label><input type="checkbox" name="service" value="encapsulado" /> Encapsulado / Pre-grading</label>
+              <label><input type="checkbox" name="service" value="esquinas" /> Reparación de esquinas</label>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label for="r-detail">Describe el daño *</label>
+            <textarea id="r-detail" name="detail" required placeholder="Ejemplo: Charizard Base Set 1999 con curvatura ligera y whitening en bordes superiores. Sin scratches en holo."></textarea>
+          </div>
+
+          <div class="form-field">
+            <label for="r-photos">Fotos de las cartas *</label>
+            <input id="r-photos" name="photos" type="file" multiple accept="image/*" required />
+            <div class="form-help">Frente, reverso y close-up del daño.</div>
+          </div>
+
+          <div class="form-field">
+            <label for="r-value">Valor estimado de las cartas (opcional)</label>
+            <input id="r-value" name="value" placeholder="$ MXN — nos ayuda a recomendarte el mejor servicio" />
+          </div>
+
+          <div class="alert alert-warn">
+            <strong>Importante:</strong> Solo hacemos restauraciones reversibles y declaradas. Para cartas muy valiosas (10k+) recomendamos encapsulado profesional sin restauración para preservar grado.
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Solicitar cotización</button>
+            <a href="https://wa.me/525500000000" target="_blank" rel="noopener" class="btn btn-outline">Hablar por WhatsApp</a>
+          </div>
+          <div id="restore-feedback"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer" id="site-footer"></footer>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/products.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      renderHeader('restaurar');
+      renderFooter();
+
+      document.getElementById('restore-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const form = e.target;
+        if (!form.checkValidity()) { form.reportValidity(); return; }
+        const data = Object.fromEntries(new FormData(form).entries());
+        console.log('Solicitud de restauración:', data);
+        document.getElementById('restore-feedback').innerHTML = `
+          <div class="alert">
+            Recibimos tu solicitud. Te enviaremos cotización en menos de 24 horas.
+          </div>`;
+        form.reset();
+        window.scrollTo({ top: document.getElementById('restore-feedback').offsetTop - 80, behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+</html>

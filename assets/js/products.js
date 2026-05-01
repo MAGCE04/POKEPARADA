@@ -145,6 +145,7 @@ function formatPrice(n) {
 }
 
 function productCard(p) {
+  const payload = JSON.stringify({id: p.id, title: p.title, price: p.price, set: p.set}).replace(/"/g, '&quot;');
   return `
     <article class="product-card">
       <div class="product-image" style="background: ${p.color}">
@@ -157,8 +158,8 @@ function productCard(p) {
         <div class="product-price">${formatPrice(p.price)}</div>
       </div>
       <div class="product-actions">
-        <button class="btn btn-outline" onclick='addToCart(${JSON.stringify({id: p.id, title: p.title, price: p.price, set: p.set})})'>Añadir</button>
-        <button class="btn btn-primary" onclick='buyNow(${JSON.stringify({id: p.id, title: p.title, price: p.price, set: p.set})})'>Comprar</button>
+        <button class="btn btn-outline" onclick="addToCart(JSON.parse(this.dataset.p), event)" data-p="${payload}">Añadir</button>
+        <button class="btn btn-primary" onclick="buyNow(JSON.parse(this.dataset.p), event)" data-p="${payload}">Comprar</button>
       </div>
     </article>
   `;
@@ -196,9 +197,9 @@ function renderCatalog() {
   if (typeof initReveal === 'function') initReveal();
 }
 
-function buyNow(product) {
-  addToCart(product);
-  window.location.href = 'checkout.html';
+function buyNow(product, evt) {
+  addToCart(product, evt);
+  setTimeout(() => { window.location.href = 'checkout.html'; }, 350);
 }
 
 window.PRODUCTS = PRODUCTS;

@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="assets/css/styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Press+Start+2P&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet" />
 </head>
 <body>
   <header class="site-header" id="site-header"></header>
@@ -25,7 +25,7 @@
             Somos especialistas en cartas Pokémon. Te pagamos al instante, te vendemos cartas auténticas y devolvemos la vida a tus cartas dañadas. Pago seguro con Mercado Pago.
           </p>
           <div class="hero-ctas">
-            <a class="btn btn-primary" href="comprar.html">Ver catálogo</a>
+            <a class="btn btn-primary btn-magnet" href="comprar.html">Ver catálogo</a>
             <a class="btn btn-outline" href="vender.html">Vender mis cartas</a>
             <a class="btn btn-ghost" href="restaurar.html">Cotizar restauración</a>
           </div>
@@ -36,12 +36,62 @@
           </ul>
         </div>
         <div class="hero-card">
-          <div class="card-stack">
-            <div class="card card-1"></div>
-            <div class="card card-2"></div>
-            <div class="card card-3"></div>
+          <div class="holo-stage">
+            <div class="holo-back holo-back-1" aria-hidden="true"></div>
+            <div class="holo-back holo-back-2" aria-hidden="true"></div>
+            <div class="holo-card" aria-hidden="true">
+              <div class="holo-inner">
+                <div class="holo-title-row">
+                  <span>Charizard</span>
+                  <span class="holo-hp">HP 150</span>
+                </div>
+                <div class="holo-art">
+                  <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                      <radialGradient id="flame" cx="50%" cy="50%" r="50%">
+                        <stop offset="0%" stop-color="#fff7c2"/>
+                        <stop offset="40%" stop-color="#ffb05a"/>
+                        <stop offset="100%" stop-color="#ff4d00"/>
+                      </radialGradient>
+                    </defs>
+                    <path fill="url(#flame)" d="M60 8c10 18 8 30-2 38 12 0 22 8 26 18-4 4-12 6-18 4 6 6 8 14 6 22-6-2-12-8-14-14-2 10-12 18-22 18-2-8 4-18 12-22-10 2-22-2-26-12 6-6 16-8 24-6-10-8-12-22-2-32 6 4 14 4 16-14z"/>
+                    <circle cx="48" cy="56" r="3" fill="#0a0b10"/>
+                    <circle cx="72" cy="56" r="3" fill="#0a0b10"/>
+                  </svg>
+                </div>
+                <div class="holo-meta">
+                  <span>Base Set · 1999</span>
+                  <span class="holo-rarity">HOLO ★</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span class="marquee-item">Base Set</span>
+        <span class="marquee-item">Jungle</span>
+        <span class="marquee-item">Fossil</span>
+        <span class="marquee-item">Team Rocket</span>
+        <span class="marquee-item">Neo Genesis</span>
+        <span class="marquee-item">Evolving Skies</span>
+        <span class="marquee-item">151</span>
+        <span class="marquee-item">Paldea Evolved</span>
+        <span class="marquee-item">Lost Origin</span>
+        <span class="marquee-item">Silver Tempest</span>
+        <span class="marquee-item">Base Set</span>
+        <span class="marquee-item">Jungle</span>
+        <span class="marquee-item">Fossil</span>
+        <span class="marquee-item">Team Rocket</span>
+        <span class="marquee-item">Neo Genesis</span>
+        <span class="marquee-item">Evolving Skies</span>
+        <span class="marquee-item">151</span>
+        <span class="marquee-item">Paldea Evolved</span>
+        <span class="marquee-item">Lost Origin</span>
+        <span class="marquee-item">Silver Tempest</span>
       </div>
     </section>
 
